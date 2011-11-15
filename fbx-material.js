@@ -1,3 +1,5 @@
+//classes for material and textures - leave me alone!
+
 function fbx_material()
 {
 	this.id;

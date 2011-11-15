@@ -13,8 +13,5 @@ function camera ()
 
 camera.prototype.update = function()
 {
-	if (this.pos.z > -levelLength && human.state == 1)
-	{
-		this.pos.z -= 1.5;
-	}
+	//will depend on mouse/keyboard actions
 }

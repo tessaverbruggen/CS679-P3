@@ -1,3 +1,5 @@
+//classes to contain models and meshes - leave me alone!
+
 function fbx_model()
 {
 	this.textures = new Array();

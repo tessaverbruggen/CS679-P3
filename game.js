@@ -20,26 +20,6 @@ var time = 0;
 var human = new player();
 var cam = new camera();
 
-/*
-//archaic globals from P2 as example
-var asteroids = new Array();
-var enemies = new Array();
-var items = new Array();
-var lasers = new Array();
-var explosions = new Array();
-var levelBackground = new background();
-var asteroidCt = 0;
-var enemyCt = 0;
-var itemCt = 0;
-var explosionCt = 0;
-var levNum = 1;
-var numOfLevels = 5;
-var lev = new level();
-var boss;
-var drawInstructions = false;
-var levelLength = 10000;
-var aimType = false;*/
-
 //load in model files for game
 var models = new Array();
 var meshNum = 0;
@@ -109,8 +89,6 @@ function checkLoaded() //checks that all models are loaded
 function nextLevel()
 {
 	playState = 1;
-	loadGUI();
-	drawGUI();
 }
 function setupLevel()
 {
@@ -123,6 +101,7 @@ function setupLevel()
 //game play loop
 function gameLoop() //switches between game states and performs correct loop operations
 {
+	//play states will likely represent different things, so this is free to change (expect case 0 which should stay the similar for loading purposes)
 	switch (playState)
 	{
 		case 0: //loading screen and instructions
@@ -135,8 +114,9 @@ function gameLoop() //switches between game states and performs correct loop ope
 			var tmp = 100*modelsChecked/totalModels+100*doneSetup;
 			document.getElementById('loadingBar').style.width = tmp+"px";
 			break;
-		case 1: // level play
-			draw();
+		case 1: // play loop
+			draw3d();
+			draw2d();
 			update();
 			break;
 		case 2: // ??
@@ -152,23 +132,17 @@ function gameLoop() //switches between game states and performs correct loop ope
 
 function update(){
 	//run update code here
-	time += 1;
-	time & 314;
+	time += 1; //for shader effects
+	time & 314; //for shader effects
 	
-	//lev.doEvents(); //do level events? is this applicable?
+	//lev.doEvents(); //do level events? is this still applicable? probably not
 	var i;
-	human.update();
+	human.update(); //will want to do updates on camera and human player still
 	cam.update();
-	//detectCollisions(); //we may not need collision detection
-	
-	if (lev.finished)
-	{
-		//deal with a completed level
-	}
 }
 
 
-function initObjects()
+function initObjects() //for binding meshes to GPU in webgl, leave as is
 {
 	var i,j;
 	for (i=0;i<models.length;i++)
@@ -184,8 +158,7 @@ function initObjects()
 	}	
 }
 
-function gameOver() {
-	//is this still relevant?
+function gameOver() { 
+	//is this method still relevant?
 	playState = 4;
-	//loadGUI();
 }

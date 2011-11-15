@@ -1,3 +1,7 @@
+//a mess of a model loader for .fbx ascii files.
+//the file format is somewhat of a nightmare so
+//the loader has to do some weird things too
+
 function fbx_parsemesh(data)
 {
 	var newModel = new fbx_model();

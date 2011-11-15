@@ -1,3 +1,6 @@
+//This is largely legacy code left in case we want to do a similar type of level loading
+//Ultimately almost all of it will need to change, but who knows
+
 function level()
 {
 	this.events = new Array();
@@ -9,6 +12,7 @@ function level()
 level.prototype.doEvents = function()
 {
 	var i;
+	//very much from P2 - left just in case
 	for (i=0;i<this.events.length;i++)
 	{
 		if (this.events[i].zpos <= -cam.pos.z && !(this.events[i].triggered))

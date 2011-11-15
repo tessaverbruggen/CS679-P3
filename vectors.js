@@ -1,3 +1,7 @@
+//some vector classes just to store vectors and do simple vector ops
+//much of this can be done with gl-matrix functions but some of this
+//may be called elsewhere so I've left it
+
 // vector types
 function v2(x,y)
 {
