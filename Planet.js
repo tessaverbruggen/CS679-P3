@@ -21,7 +21,18 @@ function Planet(planetPosition, planetType, planetSize, planetOwner,
 	
 	this.texture = "";
 	this.update = function() {
-		
+		// !!! Not sure if this would work like this... Should probably use an enum?
+		switch planetType{
+		/*
+			case "plasma":
+				planetOwner.addPlasma(3);
+				break;
+				//etc.
+		*/
+			default:
+				break;
+		}
+			
 	};
 	
 	this.draw = function() {

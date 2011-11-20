@@ -2,6 +2,7 @@
 
 //set up canvas and webgl vars
 var canvas;
+var ctx;
 var gl;
 var shaderProgram;
 var shaderProgram_main;
@@ -54,6 +55,7 @@ function initGame() //begin the "official" game initialization
 {
 	//set up drawing
 	canvas = document.getElementById("myCanvas");
+	ctx = canvas.getContext('2d');
 	gl = canvas.getContext("experimental-webgl");
 	gl.viewportWidth = canvas.width;
     gl.viewportHeight = canvas.height;
@@ -114,6 +116,7 @@ function gameLoop() //switches between game states and performs correct loop ope
 			var tmp = 100*modelsChecked/totalModels+100*doneSetup;
 			document.getElementById('loadingBar').style.width = tmp+"px";
 			break;
+			// !!! Isn't it more logical to update before drawing?
 		case 1: // play loop
 			draw3d();
 			draw2d();
